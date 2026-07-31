@@ -2,8 +2,6 @@ package do
 
 import (
 	"fmt"
-	"os"
-	"strconv"
 )
 
 type arithmetic interface{
@@ -14,13 +12,8 @@ type key struct {
 	a, b int
 }
 
-func Do () {
+func Do (x, y int, arg string) {
 	
-	arg := os.Args[1]
-
-	x, _ := strconv.Atoi(os.Args[2])
-	y, _ := strconv.Atoi(os.Args[3])
-
 	k := key{a: x, b: y}
 
 	exec(k, arg)
