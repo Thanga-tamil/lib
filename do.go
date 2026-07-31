@@ -27,8 +27,8 @@ func (k key) sub() int {
 
 func exec(a arithmetic, Type string) int {
 	ops := map[string]func() int{
-		"+": a.sum,
-		"-": a.sub,
+		"add": a.sum,
+		"sub": a.sub,
 	}
 	if f, ok := ops[Type]; ok {
 		return f()
