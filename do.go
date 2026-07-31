@@ -1,13 +1,10 @@
 package do
 
-import (
-	"fmt"
-)
-
 type arithmetic interface{
 	sum() int
 	sub() int
 }
+
 type key struct {
 	a, b int
 }
@@ -29,19 +26,12 @@ func (k key) sub() int {
 }
 
 func exec(a arithmetic, Type string) int {
-
-	fmt.Println("input type: ", Type)
-
-	fmt.Println(a)
-
-	if Type == "add" {
-		result := a.sum()
-		fmt.Println(result)
-		return result
+	ops := map[string]func() int{
+		"+": a.sum,
+		"-": a.sub,
 	}
-	result := a.sub()
-	fmt.Println(result)
-	return result
+	if f, ok := ops[Type]; ok {
+		return f()
+	}
+	return -1
 }
-
-
