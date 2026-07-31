@@ -3,6 +3,8 @@ package do
 type arithmetic interface{
 	sum() int
 	sub() int
+	mul() int
+	div() int
 }
 
 type key struct {
@@ -25,10 +27,20 @@ func (k key) sub() int {
 	return k.a - k.b
 }
 
+func (k key) mul() int {
+	return k.a * k.b
+}
+
+func (k key) div() int {
+	return k.a / k.b
+}
+
 func exec(a arithmetic, Type string) int {
 	ops := map[string]func() int{
 		"add": a.sum,
 		"sub": a.sub,
+		"mul": a.mul,
+		"div": a.div,
 	}
 	if f, ok := ops[Type]; ok {
 		return f()
