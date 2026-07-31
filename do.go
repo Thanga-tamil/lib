@@ -14,7 +14,7 @@ type key struct {
 	a, b int
 }
 
-func do () {
+func Do () {
 	
 	arg := os.Args[1]
 
